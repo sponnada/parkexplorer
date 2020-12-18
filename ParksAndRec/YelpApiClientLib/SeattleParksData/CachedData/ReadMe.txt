@@ -1,0 +1,1 @@
+﻿Cached data from https://data.seattle.gov/api/views/2cer-njie/rows.json?accessType=DOWNLOAD

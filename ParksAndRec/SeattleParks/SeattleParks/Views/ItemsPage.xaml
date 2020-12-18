@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SeattleParks.Views.ItemsPage" Title="{Binding Title}" x:Name="BrowseItemsPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <SearchBar Placeholder="Search for a park..." TextChanged="SearchBar_OnTextChanged"></SearchBar>
+            <ListView SeparatorVisibility="None" x:Name="ItemsListView" ItemsSource="{Binding Items}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--                        <ImageCell
+                            ImageSource="{Binding MainImage}" 
+                            Text="{Binding Text}" 
+                            Detail="{Binding Description}" />-->
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.RowSpan="2" Aspect="AspectFill" Source="{Binding MainImage}" />
+                                <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="12">
+                                    <Label Text="{Binding Text}" TextColor="White" LineBreakMode="TailTruncation" Style="{DynamicResource ListItemTextStyle}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                            </Grid>
+                            <!--<Label Text="{Binding Description}" 
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="Gray"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13" />-->
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView" 
+             x:Class="SeattleParks.Views.ItemDetailPage" 
+             Title="{Binding Title}">
+    <ScrollView>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".4*" />
+                <RowDefinition Height=".6*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <cv:CarouselView Grid.RowSpan="2" ItemsSource="{Binding Item.GalleryImages}" x:Name="ParkImages">
+                    <cv:CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Aspect="AspectFill" Source="{Binding}" />
+                        </DataTemplate>
+                    </cv:CarouselView.ItemTemplate>
+                </cv:CarouselView>
+                <StackLayout Grid.Row="1" BackgroundColor="#80000000" Padding="10">
+                    <Label TextColor="White" Text="{Binding Title}" FontSize="20" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="0,-5,0,0">
+                        <Label TextColor="White" Text="0.2 miles away" FontSize="12" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+                        <Image Source="yellow-star.png" HeightRequest="14"/>
+                        <Image Source="yellow-star.png" HeightRequest="14"/>
+                        <Image Source="yellow-star.png" HeightRequest="14"/>
+                        <Image Source="yellow-star.png" HeightRequest="14"/>
+                        <Image Source="half-star.png" HeightRequest="11.5" Margin="0,-2.25,0,0"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout Orientation="Vertical" Padding="0,0,0,0">
+                            <Button Text="&#x0052;" TextColor="White" FontSize="28" FontFamily="{StaticResource LineaFont}" Clicked="OnOpenInMapsClicked"/>
+                            <Label Text="Directions" TextColor="White" FontSize="12" Margin="0,-10,0,0"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="30,0,0,0">
+                            <Button Text="&#x006c;" TextColor="White" FontSize="28" FontFamily="{StaticResource LineaFont}" Clicked="ShareClicked"/>
+                            <Label Text="Share" TextColor="White" FontSize="12" Margin="0,-10,0,0"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" Padding="30,0,0,0">
+                            <Button x:Name="FavoriteButton" Text="&#x0057;" TextColor="{Binding FavoriteButtonColor}" FontSize="28" FontFamily="{StaticResource LineaFont}" Clicked="FavoriteClicked"/>
+                            <Label Text="Favorite" TextColor="White" FontSize="12" Margin="0,-10,0,0" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="1" BackgroundColor="White" Padding="15,20,15,0">
+                <Label TextColor="Black" Text="{Binding Item.AmenitiesList}" FontFamily="{StaticResource NormalFont}" FontSize="40" HorizontalOptions="Start"/>
+                <Label TextColor="Black" Text="{Binding Item.Description}" FontSize="14" HorizontalOptions="Start"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

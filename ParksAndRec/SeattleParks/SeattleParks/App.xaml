@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SeattleParks.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#003da5</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="parksAwesome.ttf#Parks Awesome" />
+                <On Platform="iOS" Value="parksAwesome" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="LineaFont">
+                <On Platform="Android" Value="linea-basic-10.ttf#Linea Icons" />
+                <On Platform="iOS" Value="linea-basic-10" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="MSIconFont">
+                <On Platform="Android" Value="FabMDL.ttf#MS Icons" />
+                <On Platform="iOS" Value="FabMDL" />
+            </OnPlatform>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
